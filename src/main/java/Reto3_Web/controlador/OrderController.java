@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Reto2_Web.controlador;
+package Reto3_Web.controlador;
 
-import Reto2_Web.servicio.FraganceService;
-import Reto2_Web.modelo.Fragance;
+import Reto3_Web.modelo.Order;
+import Reto3_Web.servicio.OrderServicio;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,41 +23,52 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author USUARIO
+ * @author david
  */
 @RestController
-@RequestMapping("/api/fragance")
+@RequestMapping("/api/order")
 @CrossOrigin("*")
-public class FraganceController {
-       @Autowired
-    private FraganceService accessoryService;
-       
-     @GetMapping("/all")
-    public List<Fragance> getAll() {
-        return accessoryService.getAll();
+public class OrderController {
+
+    @Autowired
+    private OrderServicio orderServicio;
+
+    @GetMapping("/all")
+    public List<Order> getAll() {
+        return orderServicio.getAll();
     }
-    
-    @GetMapping("/{reference}")
-    public Optional<Fragance> getClothe(@PathVariable("reference") String reference) {
-        return accessoryService.getClothe(reference);
+
+    @GetMapping("/{id}")
+    public Optional<Order> getOrder(@PathVariable("id") int id) {
+        return orderServicio.getOrder(id);
     }
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public Fragance create(@RequestBody Fragance gadget) {
-        return accessoryService.create(gadget);
-    }
-    
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Fragance update(@RequestBody Fragance gadget) {
-        return accessoryService.update(gadget);
+    public Order create(@RequestBody Order gadget) {
+        return orderServicio.create(gadget);
     }
 
-    @DeleteMapping("/{reference}")
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Order update(@RequestBody Order gadget) {
+        return orderServicio.update(gadget);
+    }
+
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("reference") String reference) {
-        return accessoryService.delete(reference);
-    } 
+    public boolean delete(@PathVariable("id") int id) {
+        return orderServicio.delete(id);
+    }
     
+
+    
+     //Reto 3:Ordenes de pedido asociadas a los asesores de una zona
+    @GetMapping("/zona/{zona}")
+    public List<Order> findByZone(@PathVariable("zona") String zona) {
+        return orderServicio.findByZone(zona);
+    }
+    
+    
+
 }

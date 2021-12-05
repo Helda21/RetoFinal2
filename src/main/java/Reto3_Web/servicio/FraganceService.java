@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Reto2_Web.servicio;
+package Reto3_Web.servicio;
 
-import Reto2_Web.modelo.Fragance;
-import Reto2_Web.repositorio.FraganceRepositorio;
+import Reto3_Web.modelo.Fragance;
+import Reto3_Web.repositorio.FraganceRepositorio;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,6 +23,9 @@ import org.springframework.stereotype.Service;
 public class FraganceService {
      @Autowired
     private FraganceRepositorio clotheRepository;
+     
+     @Autowired
+    private MongoTemplate mongoTemplate;
 
     public List<Fragance> getAll() {
         return clotheRepository.getAll();

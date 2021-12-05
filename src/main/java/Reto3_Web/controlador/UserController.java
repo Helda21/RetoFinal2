@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Reto2_Web.controlador;
-import Reto2_Web.servicio.UserService;
-import Reto2_Web.modelo.User;
+package Reto3_Web.controlador;
+import Reto3_Web.servicio.UserService;
+import Reto3_Web.modelo.User;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,13 +29,19 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 public class UserController {
     
-     @Autowired
+    @Autowired
     private UserService userService;
      
      @GetMapping("/all")
     public List<User> getAll() {
         return userService.getAll();
     }
+    
+    @GetMapping("/{id}")
+    public Optional <User> getUser(@PathVariable("id") int id) {
+        return userService.getUser(id);
+    }
+    
       @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public User create(@RequestBody User user) {

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Reto2_Web.repositorio;
+package Reto3_Web.repositorio;
 
-import Reto2_Web.interfaces.InterfaceFragance;
-import Reto2_Web.modelo.Fragance;
+import Reto3_Web.interfaces.InterfaceFragance;
+import Reto3_Web.modelo.Fragance;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author USUARIO
+ * @author Helio David Espinosa cONTRERSAS
  */
 @Repository
 public class FraganceRepositorio {
